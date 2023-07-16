@@ -12,6 +12,7 @@
 		D42950D62A63C750002F03DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D42950D52A63C750002F03DD /* Assets.xcassets */; };
 		D42950D92A63C750002F03DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D42950D82A63C750002F03DD /* Preview Assets.xcassets */; };
 		D42950E32A63D70F002F03DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42950E22A63D70F002F03DD /* SettingsView.swift */; };
+		D42950E52A63E0C0002F03DD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D42950E42A63E0C0002F03DD /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D42950D82A63C750002F03DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D42950DA2A63C750002F03DD /* CowsAndBulls.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CowsAndBulls.entitlements; sourceTree = "<group>"; };
 		D42950E22A63D70F002F03DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D42950E42A63E0C0002F03DD /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +40,6 @@
 		D42950C52A63C74F002F03DD = {
 			isa = PBXGroup;
 			children = (
-				D42950E22A63D70F002F03DD /* SettingsView.swift */,
 				D42950D02A63C74F002F03DD /* CowsAndBulls */,
 				D42950CF2A63C74F002F03DD /* Products */,
 			);
@@ -55,11 +56,13 @@
 		D42950D02A63C74F002F03DD /* CowsAndBulls */ = {
 			isa = PBXGroup;
 			children = (
+				D42950E22A63D70F002F03DD /* SettingsView.swift */,
 				D42950D12A63C74F002F03DD /* CowsAndBullsApp.swift */,
 				D42950D32A63C74F002F03DD /* ContentView.swift */,
 				D42950D52A63C750002F03DD /* Assets.xcassets */,
 				D42950DA2A63C750002F03DD /* CowsAndBulls.entitlements */,
 				D42950D72A63C750002F03DD /* Preview Content */,
+				D42950E42A63E0C0002F03DD /* Credits.rtf */,
 			);
 			path = CowsAndBulls;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D42950D92A63C750002F03DD /* Preview Assets.xcassets in Resources */,
+				D42950E52A63E0C0002F03DD /* Credits.rtf in Resources */,
 				D42950D62A63C750002F03DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

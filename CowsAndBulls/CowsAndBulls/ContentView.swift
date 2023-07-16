@@ -37,11 +37,24 @@ struct ContentView: View {
         .frame(width: 250)
         .frame(minHeight: 300)
         .onAppear(perform: startNewGame)
-        .onChange(of: answer) { _ in startNewGame() }
+        .onChange(of: answerLength) { _ in startNewGame() }
         .alert("You win", isPresented: $isGameOver) {
             Button("Ok", action: startNewGame)
         } message: {
-            Text("Congratulations! Click OK to play again.")
+            if guesses.count < 10 {
+                Text("Congratulations, you won in \(guesses.count) moves! You are a skilled player. Click OK to play again.")
+            }
+            else if guesses.count < 20 {
+                Text("Well done, you won in \(guesses.count) moves! You're nearly there. Click OK to play again.")
+            }
+            else {
+                Text("You won in \(guesses.count) moves! You can do better. Click OK to play again.")
+            }
+        }
+        .alert("You lose", isPresented: $isMaximumGuessReached) {
+            Button("Ok", action: startNewGame)
+        } message: {
+            Text("You reached the maximum guess limit. The correct answer was \(answer), better luck next time. Click OK to play again.")
         }
         .navigationTitle("Cows and Bulls")
         .touchBar {
@@ -57,6 +70,7 @@ struct ContentView: View {
     @State private var guesses = [String]()
     @State private var answer = ""
     @State private var isGameOver = false
+    @State private var isMaximumGuessReached = false
     
     @AppStorage("maximumGuesses") var maximumGuesses = 100
     @AppStorage("answerLength") var answerLength = 4
@@ -68,10 +82,14 @@ struct ContentView: View {
         guard guess.count == answerLength else { return }
         let badCharacters = CharacterSet(charactersIn: "0123456789").inverted
         guard guess.rangeOfCharacter(from: badCharacters) == nil else {return}
+        guard guesses.doesNotContain(guess) else {return}
         
         guesses.insert(guess, at: 0)
         if result(for: guess).contains("\(answerLength)b") {
             isGameOver = true
+        }
+        if guesses.count == maximumGuesses {
+            isMaximumGuessReached = true
         }
         guess = ""
     }
@@ -107,5 +125,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension Array where Element: Equatable {
+    func doesNotContain(_ element: Element) -> Bool {
+        !contains(element)
     }
 }
