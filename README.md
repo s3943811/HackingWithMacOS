@@ -20,6 +20,6 @@ A lesson on how and why Views and Modifiers work that way in SwiftUi.
 # Project 4: Text Parser :heavy_check_mark:
 A command line project that will analyses text input using the natural language library as well as the swift-argument-parses library. 
 
-# Project 5: MultiMap
+# Project 5: MultiMap :heavy_check_mark:
 An app that lets us search for and track multiple locations at the same time. 
 > Learn to create maps and map pins by combining SwiftUI and MapKit.
