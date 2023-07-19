@@ -13,5 +13,6 @@ struct MutliMapApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowStyle(.hiddenTitleBar)
     }
 }
