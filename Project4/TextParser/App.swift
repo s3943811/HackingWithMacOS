@@ -36,8 +36,18 @@ struct App: ParsableCommand {
     @Option(name: .shortAndLong, help: "The maximum number of alternatives to suggest")
     var maximumAlternatives = 10
     
+    @Option(name: .shortAndLong, help: "The name entities to detect. Seperate names by dash (-) and entities by comma (,)")
+    var entities: String
+    
     mutating func run() {
         let text = input.joined(separator: " ")
+        if entities.isEmpty {
+            entities = text
+        }
+        else {
+            entities = entities.replacingOccurrences(of: ",", with: " ").replacingOccurrences(of: "-", with: " ")
+        }
+        print(entities)
         
         if !detectedLanguage && !sentimentAnalysis && !lemmatize && !alternatives && !names {
             detectedLanguage = true
@@ -73,10 +83,10 @@ struct App: ParsableCommand {
         }
         
         if names {
-            let entities = entities(for: text)
+            let entities = entities(for: entities)
             print()
             print("Found the following entities:")
-            
+
             for entity in entities {
                 print("\t", entity)
             }
