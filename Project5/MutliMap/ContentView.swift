@@ -9,7 +9,7 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.840935, longitude: 144.946457), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State private var locations = [Location]()
     @State private var selectedLocations = Set<Location>()
     
@@ -23,8 +23,15 @@ struct ContentView: View {
         search.start { response, error in
             guard let response = response else { return }
             guard let item = response.mapItems.first else { return }
-            guard let itemName = item.name, let itemLocation = item.placemark.location else {return}
-            let newLocation = Location(name: itemName, latitude: itemLocation.coordinate.latitude, longitude: itemLocation.coordinate.longitude)
+            guard let itemName = item.name, let itemCountryName = item.placemark.country ,let itemLocation = item.placemark.location else {return}
+            for location in locations {
+                if location.name == itemName {
+                    selectedLocations = [location]
+                    searchText = ""
+                    return
+                }
+            }
+            let newLocation = Location(name: itemName, country: itemCountryName, latitude: itemLocation.coordinate.latitude, longitude: itemLocation.coordinate.longitude)
             locations.append(newLocation)
             selectedLocations = [newLocation]
             searchText = ""
@@ -56,13 +63,14 @@ struct ContentView: View {
         } detail: {
             Map(coordinateRegion: $region, annotationItems: locations) { location in
                 MapAnnotation(coordinate: location.coordinate) {
-                    Text(location.name)
+                    Text("\(location.name),\n\(location.country)")
                         .font(.headline)
                         .padding(5)
                         .padding(.horizontal, 5)
                         .background(.black)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
+                        .opacity(0.88)
                 }
             }
             .ignoresSafeArea()

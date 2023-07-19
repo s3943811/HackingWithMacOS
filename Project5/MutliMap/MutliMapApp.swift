@@ -12,6 +12,7 @@ struct MutliMapApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(height: 750)
         }
         .windowStyle(.hiddenTitleBar)
     }
