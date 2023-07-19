@@ -37,7 +37,10 @@ struct App: ParsableCommand {
     var maximumAlternatives = 10
     
     @Option(name: .shortAndLong, help: "The name entities to detect. Seperate names by dash (-) and entities by comma (,)")
-    var entities: String
+    var entities = ""
+    
+    @Option(name: .shortAndLong, help: "The maximum distance of alternatives to find.")
+    var farAwayDistance = 1.00
     
     mutating func run() {
         let text = input.joined(separator: " ")
@@ -47,7 +50,6 @@ struct App: ParsableCommand {
         else {
             entities = entities.replacingOccurrences(of: ",", with: " ").replacingOccurrences(of: "-", with: " ")
         }
-        print(entities)
         
         if !detectedLanguage && !sentimentAnalysis && !lemmatize && !alternatives && !names {
             detectedLanguage = true
@@ -107,7 +109,10 @@ struct App: ParsableCommand {
         if let embedding = NLEmbedding.wordEmbedding(for: .english) {
             let similarWords = embedding.neighbors(for: word, maximumCount: maximumAlternatives)
             for word in similarWords {
-                results.append("\(word.0) has a distance of \(word.1)")
+                if word.1 <= farAwayDistance {
+                    let formattedDistance = String(format: "%.2f", word.1)
+                    results.append("\(word.0) has a distance of \(formattedDistance)")
+                }
             }
         }
         
