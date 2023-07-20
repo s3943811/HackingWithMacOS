@@ -33,7 +33,7 @@ A command line project that will analyses text input using the natural language 
 
 > Tackle the command line with Swift Package Manager and the NaturalLangugae Framework
 
-# Project 5: MultiMap
+# Project 5: MultiMap :heavy_check_mark:
 An app that lets us search for and track multiple locations at the same time. 
 
 > Learn to create maps and map pins by combining SwiftUI and MapKit.
