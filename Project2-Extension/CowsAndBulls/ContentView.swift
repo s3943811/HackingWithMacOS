@@ -22,7 +22,7 @@ struct ContentView: View {
                 
                 let strResult = result(for: guess)
                 
-                let textColour: Color = updateTextColour(with: strResult)
+                let textColour: Color = !enableHardMode ? updateTextColour(with: strResult) : .primary
                     
                 HStack {
                     Text(guess)

@@ -21,6 +21,8 @@ As one of the challenges of project 3; Views and Modifiers; the result text shou
 - Yellow for 1 to 3 bulls and cows
 - Green for 4 bulls and/or cows
 
+Hard mode does not show any colour.
+
 # Project 3: Views and Modifier :heavy_check_mark:
 A lesson on how and why Views and Modifiers work that way in SwiftUi.
 
