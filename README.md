@@ -28,8 +28,6 @@ A lesson on how and why Views and Modifiers work that way in SwiftUi.
 
 > Dive deep into Swift's rendering system.
 
-**Challenge:** Create a custom ViewModifier (and accompanying View extension) that makes a view have a large, blue font suitable for prominent titles in a view.
-
 # Project 4: Text Parser :heavy_check_mark:
 A command line project that will analyses text input using the natural language library as well as the swift-argument-parses library. 
 
@@ -44,3 +42,8 @@ An app that lets us search for and track multiple locations at the same time.
 A technique lesson in animation. There is no project here so the final code is the latest demo from the chapter. 
 
 > Spruce up your UI with springs, bounces and more.
+
+#Project 7: FastTrack :heavy_check_mark:
+An app that searches the iTunes API displays, album covers, artist names, song titles and let users listen to a preview of each track.
+
+> Learn to fetch and parse JSON from the internet, displaying the results in a grid.

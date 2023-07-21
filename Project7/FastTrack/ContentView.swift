@@ -13,17 +13,22 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 150, maximum: 200)),
     ]
     @AppStorage("searchText") var searchText = ""
+    @State private var searches = [String]()
+    @State private var selectedSearch = Set<String>()
     @State private var tracks = [Track]()
     @State private var audioPlayer: AVPlayer?
-    
+    enum SearchLocation {
+        case formSubmit, onChange, none
+    }
+    @State private var searchLocation = SearchLocation.none
     enum SearchState {
         case none, searching, success, error
     }
     @State private var searchState = SearchState.none
     
     func performSearch() async throws {
-        guard let searchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(searchText)&limit=100&entity=song") else {return}
+        guard let safeSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
+        guard let url = URL(string: "https://itunes.apple.com/search?term=\(safeSearchText)&limit=100&entity=song") else {return}
         let (data, _) = try await URLSession.shared.data(from: url)
         let searchResults = try JSONDecoder().decode(SearchResult.self, from: data)
         tracks = searchResults.results
@@ -31,10 +36,27 @@ struct ContentView: View {
     
     func startSearch() {
         searchState = .searching
+        guard !searchText.isEmpty else {
+            searchState = .none
+            return
+        }
+        if searchLocation == .formSubmit && selectedSearch.contains(searchText) {
+            searchState = .success
+            return
+        }
+        
+        if searches.contains(searchText) {
+            let searchIndex = searches.firstIndex(of: searchText)!
+            selectedSearch = [searches[searchIndex]]
+        }
         Task {
             do {
                 try await performSearch()
                 searchState = .success
+                if !searches.contains(searchText) {
+                    searches.insert(searchText, at: 0)
+                }
+                selectedSearch = [searchText]
             } catch {
                 searchState = .error
             }
@@ -48,13 +70,13 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                TextField("Search for a song", text: $searchText)
-                    .onSubmit(startSearch)
-                Button("Search", action: startSearch)
+        NavigationSplitView {
+            List(searches, id: \.self, selection: $selectedSearch) { search in
+                Text(search)
+                
             }
-            .padding([.top, .bottom])
+
+        } detail: {
             switch searchState {
             case .none:
                 Text("Enter a search term to begin")
@@ -76,6 +98,18 @@ struct ContentView: View {
                     .frame(maxHeight: .infinity)
             }
         }
+        .searchable(text: $searchText, placement: .toolbar)
+        .onSubmit(of: .search) {
+            searchLocation = .formSubmit
+            startSearch()
+        }
+        .onChange(of: selectedSearch) { selected in
+            guard searches.count != 1 else {return}
+            searchLocation = .onChange
+            searchText = selected.joined(separator: "")
+            startSearch()
+        }
+        
     }
 }
 
