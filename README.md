@@ -39,3 +39,8 @@ A command line project that will analyses text input using the natural language 
 An app that lets us search for and track multiple locations at the same time. 
 
 > Learn to create maps and map pins by combining SwiftUI and MapKit.
+
+# Project 6: Animation :heavy_check_mark:
+A technique lesson in animation. There is no project here so the final code is the latest demo from the chapter. 
+
+> Spruce up your UI with springs, bounces and more.
