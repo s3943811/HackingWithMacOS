@@ -60,3 +60,17 @@ For this project I added some extentions/challenges to make it feel more complet
 - A home context menu button and a home button on the lose and win screens to take you back to the start screen.
 - Added some animation when switching through views and/or advancing to the next level.
 - A level counter below the Title. 
+
+
+
+
+Start Menu               |  Game View
+:--------------------:|:-------------------------:
+![Image of the game start menu](/images/Project8-Start.png)  |  ![Image of the game play view](/images/Project8-Game.png)
+Won View              |  Lost View
+![Image of the game won view](/images/Project8-Won.png)  |  ![Image of the game lost view](/images/Project8-Lost.png)
+
+# Project 9 Drawing
+> Use shapes, paths, colors, and more to create custom art for your app.
+   
+
