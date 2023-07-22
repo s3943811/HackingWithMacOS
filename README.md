@@ -48,3 +48,15 @@ A technique lesson in animation. There is no project here so the final code is t
 > Learn to fetch and parse JSON from the internet, displaying the results in a grid.
 
 An app that searches the iTunes API displays, album covers, artist names, song titles and let users listen to a preview of each track.
+
+# Project 8: Odd One Out :heavy_check_mark:
+> Build a picture-matching game that's all but guaranteed to get you stumped.
+
+A game where you have to choose the lone animal from the pairs to advance to the next round. 
+
+For this project I added some extentions/challenges to make it feel more complete:
+- A starting screen/view that describes the game.
+- Three Strikes! If you get three guesses wrong in a row on any level, you lose and have to start again.
+- A home context menu button and a home button on the lose and win screens to take you back to the start screen.
+- Added some animation when switching through views and/or advancing to the next level.
+- A level counter below the Title. 
