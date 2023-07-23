@@ -70,7 +70,18 @@ Start Menu               |  Game View
 Won View              |  Lost View
 ![Image of the game won view](/images/Project8-Won.png)  |  ![Image of the game lost view](/images/Project8-Lost.png)
 
-# Project 9 Drawing
+# Project 9: Drawing
 > Use shapes, paths, colors, and more to create custom art for your app.
    
+   
+# Project 10: Time Buddy :heavy_check_mark:
+> Expand your skills to the macOS menu bar and build a helpful utility for distributed teams.
+
+An menu bar app that lets the you figure out the time across the world by time zones you care about to a list.
+
+Start View               |  View with added time zones
+:--------------------:|:-------------------------:
+![Image of the game start menu](/images/Project10-NoTimes.png)  |  ![Image of the game play view](/images/Project10-TimeList.png)
+Error duplicate View              |  Quit warning View
+![Image of the game won view](/images/Project10-Error.png)  |  ![Image of the game lost view](/images/Project10-Quit.png)
 
