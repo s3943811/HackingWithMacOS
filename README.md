@@ -78,6 +78,7 @@ Won View              |  Lost View
 > Expand your skills to the macOS menu bar and build a helpful utility for distributed teams.
 
 An menu bar app that lets the you figure out the time across the world by time zones you care about to a list.
+- Add, delete, move and copy time zones. 
 
 Start View               |  View with added time zones
 :--------------------:|:-------------------------:
